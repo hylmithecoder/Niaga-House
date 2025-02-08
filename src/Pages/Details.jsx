@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MapPin, Phone, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import Footer from "../Components/Footer";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
