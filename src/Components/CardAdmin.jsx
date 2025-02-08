@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MapPin, Trash2, Edit2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const CardAdmin = ({ property, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -110,7 +111,12 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
           </button>
         </form>
       ) : (
-        <>
+        <>        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+        >
           <h3 className="text-xl font-semibold text-gray-900">{property.title}</h3>
           <div className="flex items-center text-gray-600">
             <MapPin size={18} className="mr-2" />
@@ -133,6 +139,7 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
               <Trash2 size={18} className="mr-2" /> Hapus
             </button>
           </div>
+          </motion.div>
         </>
       )}
     </div>
