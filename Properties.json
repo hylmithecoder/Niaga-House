@@ -6,7 +6,7 @@
     "price": "1.000.000.000",
     "specs": "3 Kamar Tidur • 2 Kamar Mandi • 150m²",
     "image": "/uploads/1738981218302-download (1).jpeg",
-    "Description": "tes\r\n",
+    "Description": "undefined",
     "no_hp": "081278727944"
   },
   {
@@ -31,31 +31,42 @@
   },
   {
     "id": 4,
-    "title": "Tes",
+    "title": "Rumah",
     "location": "Medan Sumut",
     "price": "100.000.000",
-    "specs": "3 Kamar, 2 Dapur",
+    "specs": "3 Kamar • 2 Dapur • 500m²",
     "image": "/uploads/1738981326878-download (1).jpeg",
-    "Description": "tes1",
+    "Description": "undefined",
     "no_hp": "081278727944"
   },
   {
     "id": 5,
-    "title": "Tes 123",
+    "title": "Rumah",
     "location": "Medan Sumut",
     "price": "100.000.000",
-    "specs": "3 Kamar, 2 Dapur",
+    "specs": "3 Kamar • 2 Dapur • 500m²",
     "image": "/uploads/1738990487999-newsOg_2024_8_5_1722835965184-wg2yfi.jpeg",
     "Description": "undefined",
     "no_hp": "081278727944"
   },
   {
     "id": 6,
-    "title": "ets",
+    "title": "Rumah",
     "location": "Medan Sumut",
     "no_hp": "081278727944",
     "price": "100.000.000",
     "specs": "1 Kamar Tidur • 4 Kamar Mandi • 250m²",
-    "image": "/uploads/1738997032767-newsOg_2024_8_5_1722835965184-wg2yfi.jpeg"
+    "image": "/uploads/1738997032767-newsOg_2024_8_5_1722835965184-wg2yfi.jpeg",
+    "Description": "undefined"
+  },
+  {
+    "id": 7,
+    "title": "Rumah Ku",
+    "location": "Medan Johor",
+    "no_hp": "081278727944",
+    "price": "100.000.000",
+    "specs": "3 Kamar • 2 Dapur • 500m²",
+    "image": "/uploads/1739012962480-download (1).jpeg",
+    "Description": "undefined"
   }
 ]

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardAdmin from "./CardAdmin";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const API_URL = process.env.REACT_APP_API_URL || "http://192.168.98.126:5000" /*&& "http://localhost:5000"*/;
 
 const PropertyAdmin = () => {
   const [properties, setProperties] = useState([]);
@@ -18,7 +18,7 @@ const PropertyAdmin = () => {
 
   const handleEditProperty = async (id, formData) => {
     try {
-      const response = await fetch(`http://localhost:5000/properties/${id}`, {
+      const response = await fetch(`${API_URL}/properties/${id}`, {
         method: "PUT",
         body: formData,
       });
@@ -38,7 +38,7 @@ const PropertyAdmin = () => {
 
   const handleDeleteProperty = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/properties/${id}`, {
+      const response = await fetch(`${API_URL}/properties/${id}`, {
         method: "DELETE",
       });
 

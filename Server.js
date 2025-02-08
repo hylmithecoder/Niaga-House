@@ -33,7 +33,6 @@ const loadProperties = () => {
 };
 const saveProperties = (data) => fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 
-// Upload gambar & tambahkan properti
 app.post("/properties", upload.single("image"), (req, res) => {
   const properties = loadProperties();
   const newProperty = {
@@ -41,7 +40,7 @@ app.post("/properties", upload.single("image"), (req, res) => {
     title: req.body.title,
     location: req.body.location,
     description: req.body.description,
-    no_hp: req.body.no_hp, 
+    no_hp: req.body.no_hp,
     price: req.body.price,
     specs: req.body.specs,
     image: req.file ? `/uploads/${req.file.filename}` : null,
@@ -52,7 +51,6 @@ app.post("/properties", upload.single("image"), (req, res) => {
   res.json(newProperty);
 });
 
-// Update properti dengan gambar baru
 app.put("/properties/:id", upload.single("image"), (req, res) => {
   const { id } = req.params;
   let properties = loadProperties();
@@ -60,7 +58,6 @@ app.put("/properties/:id", upload.single("image"), (req, res) => {
 
   if (index !== -1) {
     if (req.file) {
-      // Hapus gambar lama jika ada
       if (properties[index].image) {
         const oldImagePath = path.join(UPLOADS_DIR, path.basename(properties[index].image));
         if (fs.existsSync(oldImagePath)) {
@@ -77,12 +74,10 @@ app.put("/properties/:id", upload.single("image"), (req, res) => {
   }
 });
 
-// Ambil semua properti
 app.get("/properties", (req, res) => {
   res.json(loadProperties());
 });
 
-// Ambil properti berdasarkan ID
 app.get("/properties/:id", (req, res) => {
   const { id } = req.params;
   const properties = loadProperties();
@@ -95,13 +90,11 @@ app.get("/properties/:id", (req, res) => {
   }
 });
 
-// Hapus properti
 app.delete("/properties/:id", (req, res) => {
   const { id } = req.params;
   let properties = loadProperties();
   const property = properties.find((prop) => prop.id == id);
 
-  // Hapus file gambar jika ada
   if (property && property.image) {
     const imagePath = path.join(UPLOADS_DIR, path.basename(property.image));
     if (fs.existsSync(imagePath)) {
@@ -114,8 +107,7 @@ app.delete("/properties/:id", (req, res) => {
   res.json({ message: "Properti dihapus" });
 });
 
-// Serve static files dari folder uploads
-app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

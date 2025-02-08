@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { MapPin, Phone, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const API_URL = process.env.REACT_APP_API_URL ||/* "http://localhost:5000"*/ "http://192.168.98.126:5000";
 
 const PropertyDetail = () => {
   const { id } = useParams();

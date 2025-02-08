@@ -84,10 +84,12 @@ const Navbar = () => {
           ))}
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center justify-between px-3">
+            <a href='/admin'>
               <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors px-3 py-2">
-                <LogIn className="h-5 w-5" />
+                <LogIn className="h-5 w-5" />                
                 <span>Sign In</span>
               </button>
+            </a>
               <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200">
                 Register
               </button>
