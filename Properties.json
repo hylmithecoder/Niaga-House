@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Villa Modern Minimalis",
+    "location": "Medan Area",
+    "price": "1.000.000.000",
+    "specs": "3 Kamar Tidur • 2 Kamar Mandi • 150m²",
+    "image": "/uploads/1738981218302-download (1).jpeg",
+    "Description": "tes\r\n",
+    "no_hp": "081278727944"
+  },
+  {
+    "id": 2,
+    "title": "Rumah Klasik Kolonial",
+    "location": "Bandung",
+    "price": "1.800.000.000",
+    "specs": "4 Kamar Tidur • 3 Kamar Mandi • 200m²",
+    "image": "/uploads/1738981697738-download (1).jpeg",
+    "Description": "Rumas Klasik Kolonial Di Bandung\r\nMasih Bagus",
+    "no_hp": "081362229383"
+  },
+  {
+    "id": 3,
+    "title": "Townhouse Premium",
+    "location": "Binjai",
+    "price": "3.200.000.000",
+    "specs": "1 Kamar Tidur • 4 Kamar Mandi • 250m²",
+    "image": "https://www.wadjakaryadunia.com/wp-content/uploads/2023/06/konsep-rumah-minimalis-jpg.webp",
+    "Description": "tes 123",
+    "no_hp": "081362229383"
+  },
+  {
+    "id": 4,
+    "title": "Tes",
+    "location": "Medan Sumut",
+    "price": "100.000.000",
+    "specs": "3 Kamar, 2 Dapur",
+    "image": "/uploads/1738981326878-download (1).jpeg",
+    "Description": "tes1",
+    "no_hp": "081278727944"
+  },
+  {
+    "id": 5,
+    "title": "Tes 123",
+    "location": "Medan Sumut",
+    "price": "100.000.000",
+    "specs": "3 Kamar, 2 Dapur",
+    "image": "/uploads/1738990487999-newsOg_2024_8_5_1722835965184-wg2yfi.jpeg",
+    "Description": "undefined",
+    "no_hp": "081278727944"
+  }
+]
