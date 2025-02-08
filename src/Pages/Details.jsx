@@ -16,6 +16,7 @@ const PropertyDetail = () => {
     const fetchProperty = async () => {
       try {
         const response = await fetch(`${API_URL}/properties/${id}`);
+        console.log(response);
         if (!response.ok) {
           throw new Error("Properti tidak ditemukan");
         }
