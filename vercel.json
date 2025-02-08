@@ -21,11 +21,36 @@
       "dest": "/server.js"
     },
     {
-      "handle": "filesystem"
+      "src": "^/static/(.*)",
+      "dest": "/build/static/$1"
+    },
+    {
+      "src": "^/favicon.ico",
+      "dest": "/build/favicon.ico"
+    },
+    {
+      "src": "^/manifest.json",
+      "dest": "/build/manifest.json"
+    },
+    {
+      "src": "^/asset-manifest.json",
+      "dest": "/build/asset-manifest.json"
+    },
+    {
+      "src": "^/(.*).png",
+      "dest": "/build/$1.png"
+    },
+    {
+      "src": "^/(.*).js",
+      "dest": "/build/$1.js"
+    },
+    {
+      "src": "^/(.*).css",
+      "dest": "/build/$1.css"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/build/index.html"
     }
   ]
 }
