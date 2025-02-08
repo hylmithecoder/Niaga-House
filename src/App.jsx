@@ -8,6 +8,7 @@ import NotFound from './Pages/NotFound';
 import { Analytics } from "@vercel/analytics/react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import AddProperty from './Pages/AddProperty';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/property-detail/:id' element={<PropertyDetail />} /> 
+          <Route path='/add-property' element={<AddProperty />} />
           <Route path='/admin' element={<AdminPanel />} />
           <Route path="*" element={<NotFound/>}/>
         </Routes>

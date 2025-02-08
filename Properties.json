@@ -48,5 +48,14 @@
     "image": "/uploads/1738990487999-newsOg_2024_8_5_1722835965184-wg2yfi.jpeg",
     "Description": "undefined",
     "no_hp": "081278727944"
+  },
+  {
+    "id": 6,
+    "title": "ets",
+    "location": "Medan Sumut",
+    "no_hp": "081278727944",
+    "price": "100.000.000",
+    "specs": "1 Kamar Tidur • 4 Kamar Mandi • 250m²",
+    "image": "/uploads/1738997032767-newsOg_2024_8_5_1722835965184-wg2yfi.jpeg"
   }
 ]
