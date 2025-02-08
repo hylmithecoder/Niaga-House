@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardAdmin from "./CardAdmin";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://192.168.98.126:5000" /*&& "http://localhost:5000"*/;
+const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app" /*&& "http://localhost:5000"*/;
 
 const PropertyAdmin = () => {
   const [properties, setProperties] = useState([]);

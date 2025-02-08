@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MapPin, Home, Search } from "lucide-react";
 import { motion } from "framer-motion";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://192.168.98.126:5000" /*&& "http://localhost:5000"*/;
+const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app" /*&& "http://localhost:5000"*/;
 
 const PropertyList = () => {
   const [properties, setProperties] = useState([]); // Data hasil pencarian
