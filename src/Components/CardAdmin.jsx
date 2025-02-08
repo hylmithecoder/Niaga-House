@@ -37,6 +37,11 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
   };
 
   return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3 }}
+    >
     <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow p-4">
       <img
         src={property.image}
@@ -112,11 +117,7 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
         </form>
       ) : (
         <>        
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3 }}
-        >
+        
           <h3 className="text-xl font-semibold text-gray-900">{property.title}</h3>
           <div className="flex items-center text-gray-600">
             <MapPin size={18} className="mr-2" />
@@ -139,10 +140,10 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
               <Trash2 size={18} className="mr-2" /> Hapus
             </button>
           </div>
-          </motion.div>
         </>
       )}
     </div>
+    </motion.div>
   );
 };
 
