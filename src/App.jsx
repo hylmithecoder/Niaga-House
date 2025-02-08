@@ -5,12 +5,16 @@ import Home from './Pages/Home';
 import PropertyDetail from './Pages/Details';
 import AdminPanel from './Pages/AdminPanel';
 import NotFound from './Pages/NotFound';
+import { Analytics } from "@vercel/analytics/react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
+    <HelmetProvider>
     <Router>
-      <div>        
+      <Analytics/>
+      <div>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -20,6 +24,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </HelmetProvider>
   );
 }
 
