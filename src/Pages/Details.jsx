@@ -179,7 +179,6 @@ const PropertyDetail = () => {
         </div>
       </motion.div>      
       </div>
-    <Footer/>
     </div>
   );
 };
