@@ -41,7 +41,7 @@ const Navbar = () => {
 
             {/* Desktop Sign In/Register */}
             <div className="flex items-center space-x-4">    
-              <a href="/login">
+              <a href="/admin/login">
               <button className="flex items-center space-x-2 px-4 py-2 text-blue-600 hover:text-blue-700 transition-colors">
                 <LogIn className="h-4 w-4" />
                 <span>Sign In</span>
@@ -84,7 +84,7 @@ const Navbar = () => {
           ))}
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center justify-between px-3">
-            <a href='/login'>
+            <a href='/admin/login'>
               <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors px-3 py-2">
                 <LogIn className="h-5 w-5" />                
                 <span>Sign In</span>

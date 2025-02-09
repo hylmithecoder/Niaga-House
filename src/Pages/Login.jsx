@@ -23,12 +23,13 @@ const Login = () => {
         throw new Error('Password salah');
       }
 
-      // Store both the full user object and the username separately
+      // Simpan data user dan waktu login
+      const loginTime = new Date().getTime(); // Waktu saat ini dalam milidetik
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('username', username);
-      
-      // Add an isAuthenticated flag
       localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('loginTime', loginTime);
+      console.log('Login Time:', loginTime);
       
       navigate(`/admin/${username}`);
     } catch (err) {

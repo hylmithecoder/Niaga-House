@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app" /* && "http://localhost:5000"*/;
+const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app";
 
 const AddProperty = () => { 
-  console.log(`${API_URL}/properties`);
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
   const [newProperty, setNewProperty] = useState({
     title: "",
     location: "",
@@ -16,6 +16,15 @@ const AddProperty = () => {
     specs: "",
     image: null,
   });
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    } else {
+      navigate("/login"); // Redirect jika tidak ada username di localStorage
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,7 +51,7 @@ const AddProperty = () => {
     });
 
     if (response.ok) {
-      navigate("/admin");
+      navigate(`/admin/${username}`);
     } else {
       console.error("Failed to save property");
     }
@@ -57,6 +66,8 @@ const AddProperty = () => {
         transition={{ duration: 0.5 }}
       >
         <h2 className="text-2xl font-bold mb-4 text-center">Tambah Properti</h2>
+        
+        <p className="text-center text-gray-600 mb-4">Admin: <span className="font-semibold">{username}</span></p>
 
         <label className="block mb-2">
           <span className="text-gray-700">Judul:</span>
@@ -81,7 +92,7 @@ const AddProperty = () => {
         </label>
 
         <label className="block mb-2">
-          <span className="text-gray-700">No Whats App:</span>
+          <span className="text-gray-700">No WhatsApp:</span>
           <input
             type="text"
             name="no_hp"
@@ -93,14 +104,12 @@ const AddProperty = () => {
 
         <label className="block mb-2">
           <span className="text-gray-700">Deskripsi:</span>
-            <textarea 
-              name="description" 
-              value={newProperty.description}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md"
-            >
-
-            </textarea>
+          <textarea 
+            name="description" 
+            value={newProperty.description}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded-md"
+          ></textarea>
         </label>
 
         <label className="block mb-2">
@@ -136,7 +145,7 @@ const AddProperty = () => {
 
         <div className="flex justify-between mt-4">
           <motion.button
-            onClick={() => navigate("/admin")}
+            onClick={() => navigate(`/admin/${username}`)}
             className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
