@@ -46,11 +46,11 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Selamat Datang di Niaga Rumah
+              Selamat Datang di Medan Land Property
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Niaga Rumah adalah perusahaan properti terkemuka yang berdiri sejak tahun 2010 di Jakarta. 
+              Medan Land Property adalah perusahaan properti terkemuka yang berdiri sejak tahun 2010 di Jakarta. 
               Dengan pengalaman lebih dari 13 tahun, kami telah dipercaya oleh ribuan keluarga dalam 
               menemukan hunian ideal mereka.
             </p>

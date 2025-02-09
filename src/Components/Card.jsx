@@ -3,6 +3,15 @@ import { MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Card = ({ property }) => {
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(price);
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
       <img
@@ -21,7 +30,7 @@ const Card = ({ property }) => {
         <p className="text-gray-600 mb-4">{property.specs}</p>
         <div className="flex justify-between items-center">
           <span className="text-xl font-bold text-blue-600">
-            Rp{property.price}
+            {formatPrice(property.price)}
           </span>
           <Link
             to={`/property-detail/${property.id}`}
