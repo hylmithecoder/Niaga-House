@@ -24,10 +24,10 @@ const HomePage = () => {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
           <h1 className="text-5xl font-bold text-white mb-6">
-            Temukan Rumah Impian Anda
+            Temukan Properti Impian Anda Di Kota Medan Dan Sekitarnya
           </h1>
           <p className="text-xl text-gray-200 mb-8">
-            Kami menyediakan pilihan properti terbaik untuk keluarga Anda
+            Cari Properti Yang Anda Inginkan Di Kota Medan Dan Sekitarnya
           </p>
           
           {/* Search Bar */}
@@ -50,7 +50,7 @@ const HomePage = () => {
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Medan Land Property adalah perusahaan properti terkemuka yang berdiri sejak tahun 2010 di Jakarta. 
+              Medan Land Property adalah perusahaan properti terkemuka yang berdiri sejak tahun 2010 di Medan. 
               Dengan pengalaman lebih dari 13 tahun, kami telah dipercaya oleh ribuan keluarga dalam 
               menemukan hunian ideal mereka.
             </p>

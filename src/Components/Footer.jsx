@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-gray-800 p-6 mt-10">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="text-gray-300 text-sm">
-          &copy; 2025 RealEstatePro. All rights reserved.
+          &copy; 2025 MedanLandProperty. All rights reserved.
         </div>
         <ul className="flex space-x-4 mt-4 md:mt-0">
           <li>
