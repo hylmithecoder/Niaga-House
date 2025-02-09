@@ -13,7 +13,7 @@ const Login = () => {
     setError('');
     
     try {
-      const response = await fetch(`http://endpoint-niaga-production.up.railway.app/users/${username}`);
+      const response = await fetch(`https://endpoint-niaga-production.up.railway.app/users/${username}`);
       if (!response.ok) {
         throw new Error('User tidak ditemukan');
       }
