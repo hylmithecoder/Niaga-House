@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MapPin, Search, Building2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app";
 
@@ -44,6 +45,14 @@ const PropertyList = () => {
   };
 
   return (
+    <><Helmet>
+        <title>Jual Rumah di Medan | Properti Dijual Terbaru</title>
+        <meta name="description" content="Cari rumah dijual di Medan dan sekitarnya dengan harga terbaik. Temukan properti impian Anda sekarang." />
+        <meta property="og:title" content="Jual Rumah di Medan | Properti Terbaru" />
+        <meta property="og:description" content="Temukan properti terbaik di Medan. Jual beli rumah, apartemen, dan tanah dengan harga terjangkau." />
+        <meta property="og:url" content="https://example.com/jual-rumah-medan" />
+      </Helmet>
+
     <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
     {/* Search Header */}
     <div className="p-4 bg-white border-b">
@@ -148,7 +157,7 @@ const PropertyList = () => {
       )}
     </div>
   </div>
-
+  </>
   );
 };
 
