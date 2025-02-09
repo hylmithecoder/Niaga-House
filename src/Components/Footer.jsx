@@ -20,13 +20,13 @@ const Footer = () => {
         </ul>
         <div className="flex space-x-4 mt-4 md:mt-0">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <img src="images/facebook-icon.svg" alt="Facebook" className="w-6 h-6"/>
+            <img src="https://medanlandproperty.vercel.app/images/facebook-icon.svg" alt="Facebook" className="w-6 h-6"/>
           </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <img src="images/x-icon.svg" alt="Twitter" className="w-6 h-6"/>
+            <img src="https://medanlandproperty.vercel.app/images/x-icon.svg" alt="Twitter" className="w-6 h-6"/>
           </a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <img src="images/ig-icon.svg" alt="Instagram" className="w-6 h-6"/>
+            <img src="https://medanlandproperty.vercel.app/images/ig-icon.svg" alt="Instagram" className="w-6 h-6"/>
           </a>
         </div>
       </div>
