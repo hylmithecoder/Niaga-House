@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import AddProperty from './Pages/AddProperty';
 import Login from './Pages/Login';
+import AboutUs from './Pages/AboutUs';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/add-property' element={<AddProperty />} />
           <Route path='/admin/:username' element={<AdminPanel />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/about-us' element={<AboutUs />} />
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </div>
