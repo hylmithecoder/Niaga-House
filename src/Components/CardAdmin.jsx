@@ -21,7 +21,7 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
     const formData = new FormData();
     formData.append("title", editedProperty.title);
     formData.append("location", editedProperty.location);
-    formData.append("description", editedProperty.description);
+    formData.append("Description", editedProperty.Description);
     formData.append("no_hp", editedProperty.no_hp);
     formData.append("price", editedProperty.price);
     formData.append("specs", editedProperty.specs);
@@ -83,8 +83,8 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
               placeholder="Nomor HP"
             />
             <textarea
-              name="description"
-              value={editedProperty.description}
+              name="Description"
+              value={editedProperty.Description}
               onChange={handleChange}
               className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Deskripsi"
