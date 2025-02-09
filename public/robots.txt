@@ -1,4 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow: /images/
+Disallow: /uploads/
 Sitemap: https://medanlandproperty.vercel.app/sitemap.xml
