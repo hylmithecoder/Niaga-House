@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Medan Land Property</title>
+        <title>Jual Rumah Di Medan</title>
         <meta name="description" content="Medan Land Property Adalah Tempat Jualan Rumah Terbaik Di Medan" />
         <link rel="canonical" href="https://medanlandproperty.vercel.app/" />
         <meta name="robots" content="index, follow" />
