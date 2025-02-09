@@ -14,7 +14,7 @@ const HomePage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         >
-      <div className="relative h-[600px]">
+      <div className="relative h-[800px]">
         <div className="absolute inset-0 bg-black/50">
           <img 
             src="https://shila.co.id/wp-content/uploads/2024/05/Apa-itu-Rumah-Luxury-Tudor-scaled.webp" 
@@ -22,7 +22,7 @@ const HomePage = () => {
             className="w-full h-full object-cover mix-blend-overlay"
           />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
+        <div className="relative max-w-4xl mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
           <h1 className="text-5xl font-bold text-white mb-6">
             Temukan Properti Impian Anda Di Kota Medan Dan Sekitarnya
           </h1>
@@ -32,7 +32,7 @@ const HomePage = () => {
           
           {/* Search Bar */}
           <PropertyList />
-          </div>
+          </div>          
       </div>
       </motion.div>
 
