@@ -50,7 +50,7 @@ const PropertyList = () => {
         <meta name="description" content="Cari rumah dijual di Medan dan sekitarnya dengan harga terbaik. Temukan properti impian Anda sekarang." />
         <meta property="og:title" content="Jual Rumah di Medan | Properti Terbaru" />
         <meta property="og:description" content="Temukan properti terbaik di Medan. Jual beli rumah, apartemen, dan tanah dengan harga terjangkau." />
-        <meta property="og:url" content="https://example.com/jual-rumah-medan" />
+        <meta property="og:url" content="https://medanlandproperty.vercel.app/" />
       </Helmet>
 
     <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">

@@ -9,13 +9,13 @@ const Footer = () => {
         </div>
         <ul className="flex space-x-4 mt-4 md:mt-0">
           <li>
-            <a href="/privacy" className="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a>
+            <a href="/" className="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a>
           </li>
           <li>
-            <a href="/terms" className="text-gray-300 hover:text-white transition duration-300">Terms of Service</a>
+            <a href="/" className="text-gray-300 hover:text-white transition duration-300">Terms of Service</a>
           </li>
           <li>
-            <a href="/contact" className="text-gray-300 hover:text-white transition duration-300">Contact Us</a>
+            <a href="https://ilmeee-portofolio.vercel.app/" className="text-gray-300 hover:text-white transition duration-300">Contact Us</a>
           </li>
         </ul>
         <div className="flex space-x-4 mt-4 md:mt-0">
