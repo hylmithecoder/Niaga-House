@@ -4,9 +4,21 @@ import { motion } from 'framer-motion';
 import FeaturedProperties from '../Components/FeaturedProperty';
 import Footer from '../Components/Footer';
 import PropertyList from '../Components/PropertyList';
+import { Helmet } from 'react-helmet-async';
 
 const HomePage = () => {
   return (
+    <>
+      <Helmet>
+        <title>Medan Land Property</title>
+        <meta name="description" content="Medan Land Property Adalah Tempat Jualan Rumah Terbaik Di Medan" />
+        <link rel="canonical" href="https://medanlandproperty.vercel.app/" />
+        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="Jual Rumah, Rumah di Medan, Rumah di Medan Johor, Rumah Sunggal, Medan Land Property, Agen Rumah Medan, Agen Tanah Medan" />
+        <meta name="author" content="Hylmi Muhammad Fiary Mahdi" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="https://medanlandproperty.vercel.app/favicon.ico" />
+      </Helmet>
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <motion.div
@@ -159,6 +171,7 @@ const HomePage = () => {
       </motion.div>
       <Footer />
     </div>
+    </>
   );
 };
 
