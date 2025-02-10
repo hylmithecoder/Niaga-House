@@ -185,7 +185,7 @@ const PropertyDetail = () => {
             >
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Deskripsi</h2>
               <p className="text-gray-600 leading-relaxed">
-                {property.Description}
+                {property.description}
               </p>
             </motion.div>
 

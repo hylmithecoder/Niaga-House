@@ -7,8 +7,6 @@ const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-product
 const AddProperty = () => { 
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
-  const [setIsLoggedIn] = useState(false);
-  const [lastActivity, setLastActivity] = useState(Date.now());
   const [newProperty, setNewProperty] = useState({
     title: "",
     location: "",
@@ -20,28 +18,6 @@ const AddProperty = () => {
   });
   const [error, setError] = useState("");
 
-  const INACTIVE_TIMEOUT = 5 * 60 * 1000;
-
-  const handleUserActivity = () => {
-    setLastActivity(Date.now());
-  };
-  
-  // Setup activity listeners
-    useEffect(() => {
-      // Add event listeners for user activity
-      const events = ['mousedown', 'keydown', 'scroll', 'mousemove', 'touchstart'];
-      
-      events.forEach(event => {
-        window.addEventListener(event, handleUserActivity);
-      });
-  
-      return () => {
-        events.forEach(event => {
-          window.removeEventListener(event, handleUserActivity);
-        });
-      };
-    }, []);
-
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
     if (storedUsername) {
@@ -50,26 +26,6 @@ const AddProperty = () => {
       navigate("/login"); // Redirect jika tidak ada username di localStorage
     }
   }, [navigate]);
-
-  useEffect(() => {
-      const checkInactivity = setInterval(() => {
-        const timeSinceLastActivity = Date.now() - lastActivity;
-        console.log(timeSinceLastActivity);
-        if (timeSinceLastActivity >= INACTIVE_TIMEOUT) {
-          // Clear local storage
-          localStorage.clear();
-          // Reset states
-          setIsLoggedIn(false);
-          setError("Session expired due to inactivity");
-          // Navigate to login
-          navigate('/login');
-          // Clear the interval
-          clearInterval(checkInactivity);
-        }
-      }, 1000); // Check every second
-  
-      return () => clearInterval(checkInactivity);
-    }, [lastActivity, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

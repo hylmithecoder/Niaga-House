@@ -30,7 +30,7 @@ const Login = () => {
       localStorage.setItem('username', username);
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('loginTime', loginTime);
-      let isAuthenticated = localStorage.getItem('isAuthenticated');
+      // let isAuthenticated = localStorage.getItem('isAuthenticated');
       // console.log("Autentikasi: "+isAuthenticated);
       console.log('Login Time:', loginTime);
       

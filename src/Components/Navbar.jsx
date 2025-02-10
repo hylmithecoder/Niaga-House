@@ -1,9 +1,38 @@
-import React, { useState } from 'react';
-import { Menu, X, Home, Building, Users, Phone, LogIn } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Home, Building, Users, Phone, LogIn, LogOut, User } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-//   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const isAuthenticated = localStorage.getItem('isAuthenticated');
+      const storedUsername = localStorage.getItem('username');
+      if (isAuthenticated && storedUsername) {
+        setIsLoggedIn(true);
+        setUsername(storedUsername);
+      } else {
+        setIsLoggedIn(false);
+        setUsername('');
+      }
+    };
+
+    checkAuth();
+    // Add event listener for storage changes
+    window.addEventListener('storage', checkAuth);
+    return () => window.removeEventListener('storage', checkAuth);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    setIsLoggedIn(false);
+    setUsername('');
+    navigate('/');
+  };
 
   const menuItems = [
     { title: 'Home', href: '/', icon: Home },
@@ -39,17 +68,38 @@ const Navbar = () => {
               </a>
             ))}
 
-            {/* Desktop Sign In/Register */}
-            <div className="flex items-center space-x-4">    
-              <a href="/admin/login">
-              <button className="flex items-center space-x-2 px-4 py-2 text-blue-600 hover:text-blue-700 transition-colors">
-                <LogIn className="h-4 w-4" />
-                <span>Sign In</span>
-              </button>
-              </a>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2">
-                <span>Register</span>
-              </button>
+            {/* Desktop Authentication Buttons */}
+            <div className="flex items-center space-x-4">
+              {isLoggedIn ? (
+                <>
+                  <a
+                    href={`/admin/${username}`}
+                    className="flex items-center space-x-2 px-4 py-2 text-blue-600 hover:text-blue-700 transition-colors"
+                  >
+                    <User className="h-4 w-4" />
+                    <span>{username}</span>
+                  </a>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200 flex items-center space-x-2"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span>Logout</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <a href="/admin/login">
+                    <button className="flex items-center space-x-2 px-4 py-2 text-blue-600 hover:text-blue-700 transition-colors">
+                      <LogIn className="h-4 w-4" />
+                      <span>Sign In</span>
+                    </button>
+                  </a>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200 flex items-center space-x-2">
+                    <span>Register</span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
@@ -84,15 +134,36 @@ const Navbar = () => {
           ))}
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center justify-between px-3">
-            <a href='/admin/login'>
-              <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors px-3 py-2">
-                <LogIn className="h-5 w-5" />                
-                <span>Sign In</span>
-              </button>
-            </a>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200">
-                Register
-              </button>
+              {isLoggedIn ? (
+                <>
+                  <a
+                    href={`/admin/${username}`}
+                    className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors px-3 py-2"
+                  >
+                    <User className="h-5 w-5" />
+                    <span>{username}</span>
+                  </a>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200 flex items-center space-x-2"
+                  >
+                    <LogOut className="h-5 w-5" />
+                    <span>Logout</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <a href="/admin/login">
+                    <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors px-3 py-2">
+                      <LogIn className="h-5 w-5" />
+                      <span>Sign In</span>
+                    </button>
+                  </a>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200">
+                    <span>Register</span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
