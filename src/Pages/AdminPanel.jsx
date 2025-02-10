@@ -41,7 +41,7 @@ const AdminPanel = () => {
       const lastActivity = localStorage.getItem("lastActivity");
       const timeSinceLastActivity = Date.now() - lastActivity;
       if (timeSinceLastActivity >= INACTIVE_TIMEOUT) {
-        handleLogout(true);
+        // handleLogout(true);
       }
     }, 1000); // Check every second
 
@@ -83,7 +83,7 @@ const AdminPanel = () => {
         await response.json();
         setIsLoggedIn(true);
       } catch (err) {
-        handleLogout(true);
+        // handleLogout(true);
       }
     };
     checkAuth();
