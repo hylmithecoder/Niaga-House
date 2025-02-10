@@ -10,7 +10,7 @@ const AddProperty = () => {
   const [newProperty, setNewProperty] = useState({
     title: "",
     location: "",
-    description: "",
+    Description: "",
     no_hp: "",
     price: "",
     specs: "",
