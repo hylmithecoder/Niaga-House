@@ -107,7 +107,7 @@ const AddProperty = () => {
         <label className="block mb-2">
           <span className="text-gray-700">Deskripsi:</span>
           <textarea 
-            name="description" 
+            name="Description" 
             value={newProperty.description}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded-md"
