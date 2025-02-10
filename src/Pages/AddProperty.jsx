@@ -10,7 +10,7 @@ const AddProperty = () => {
   const [newProperty, setNewProperty] = useState({
     title: "",
     location: "",
-    description: "",
+    Description: "",
     no_hp: "",
     price: "",
     specs: "",
@@ -41,7 +41,7 @@ const AddProperty = () => {
     formData.append("location", newProperty.location);
     formData.append("price", newProperty.price);
     formData.append("no_hp", newProperty.no_hp);
-    formData.append("Description", newProperty.description);
+    formData.append("Description", newProperty.Description);
     formData.append("specs", newProperty.specs);
     formData.append("image", newProperty.image);
 
@@ -106,7 +106,7 @@ const AddProperty = () => {
           <span className="text-gray-700">Deskripsi:</span>
           <textarea 
             name="description" 
-            value={newProperty.description}
+            value={newProperty.Description}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded-md"
           ></textarea>
