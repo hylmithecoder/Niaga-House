@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -29,6 +30,8 @@ const Login = () => {
       localStorage.setItem('username', username);
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('loginTime', loginTime);
+      let isAuthenticated = localStorage.getItem('isAuthenticated');
+      // console.log("Autentikasi: "+isAuthenticated);
       console.log('Login Time:', loginTime);
       
       navigate(`/admin/${username}`);
@@ -38,6 +41,10 @@ const Login = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Login - Medan Land Property</title>
+      </Helmet>
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600">
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
@@ -81,6 +88,7 @@ const Login = () => {
         </form>
       </motion.div>
     </div>
+    </>
   );
 };
 

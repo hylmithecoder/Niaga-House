@@ -47,6 +47,7 @@ const PropertyList = () => {
   return (
     <><Helmet>
         <title>Medan Land Property</title>
+        <link rel="icon" href="/favicon.ico"/>
         <meta name="keywords" content="Jual Rumah, Rumah di Medan, Rumah di Medan Johor, Rumah Sunggal, Medan Land Property, Agen Rumah Medan, Agen Tanah Medan" />
         <meta name="description" content="Cari rumah dijual di Medan dan sekitarnya dengan harga terbaik. Temukan properti impian Anda sekarang." />
         <meta property="og:title" content="Jual Rumah di Medan | Properti Terbaru" />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import AdminProperties from "../Components/PropertyAdmin";
 import Footer from "../Components/Footer";
 
@@ -8,57 +8,98 @@ const AdminPanel = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [lastActivity, setLastActivity] = useState(Date.now());
   const navigate = useNavigate();
+  const location = useLocation();
+  const INACTIVE_TIMEOUT = 10 * 60 * 1000; // 10 minutes
 
-  // Check authentication status
+  // Enhanced logout function
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.clear();
+    console.log("Logged out successfully");
+    navigate("/login");
+  };
+
+  // Handle page visibility change
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        handleLogout();
+      }
+    };
+
+    // Handle page unload
+    const handleBeforeUnload = () => {
+      handleLogout();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
+  // Activity detection
+  useEffect(() => {
+    const events = ["mousedown", "keydown", "scroll", "mousemove", "touchstart"];
+    const updateActivity = () => setLastActivity(Date.now());
+
+    events.forEach(event => window.addEventListener(event, updateActivity));
+    
+    return () => {
+      events.forEach(event => window.removeEventListener(event, updateActivity));
+    };
+  }, []);
+
+  // Inactivity check
+  useEffect(() => {
+    const checkInactivity = setInterval(() => {
+      if (Date.now() - lastActivity >= INACTIVE_TIMEOUT) {
+        handleLogout();
+      }
+    }, 1000);
+
+    return () => clearInterval(checkInactivity);
+  }, [lastActivity]);
+
+  // Authentication check
   useEffect(() => {
     const checkAuth = async () => {
       const isAuthenticated = localStorage.getItem("isAuthenticated");
       const storedUser = localStorage.getItem("user");
-      
+
       if (!isAuthenticated || !storedUser) {
         setError("Please login to access admin panel");
         setLoading(false);
-        navigate('/login');
+        navigate("/login");
         return;
       }
 
       try {
         const user = JSON.parse(storedUser);
-        const response = await fetch(
-          `https://endpoint-niaga-production.up.railway.app/users/${user.username}`
-        );
-        
-        if (!response.ok) {
-          throw new Error("Authentication failed");
-        }
+        const response = await fetch(`https://endpoint-niaga-production.up.railway.app/users/${user.username}`);
+        if (!response.ok) throw new Error("Authentication failed");
 
         await response.json();
         setIsLoggedIn(true);
       } catch (err) {
-        setError("Authentication failed. Please login again.");
-        localStorage.clear();
-        setLoading(false);
-        navigate('/login');
+        handleLogout();
       }
     };
-
     checkAuth();
   }, [navigate]);
 
-  // Fetch properties data
+  // Fetch properties
   useEffect(() => {
     const fetchProperties = async () => {
       if (!isLoggedIn) return;
-
       try {
-        const response = await fetch(
-          "https://endpoint-niaga-production.up.railway.app/properties"
-        );
-        
-        if (!response.ok) {
-          throw new Error("Failed to fetch properties");
-        }
+        const response = await fetch("https://endpoint-niaga-production.up.railway.app/properties");
+        if (!response.ok) throw new Error("Failed to fetch properties");
 
         const data = await response.json();
         setProperties(data);
@@ -68,7 +109,6 @@ const AdminPanel = () => {
         setLoading(false);
       }
     };
-
     fetchProperties();
   }, [isLoggedIn]);
 

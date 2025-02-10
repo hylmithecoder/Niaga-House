@@ -7,6 +7,8 @@ const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-product
 const AddProperty = () => { 
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
+  const [setIsLoggedIn] = useState(false);
+  const [lastActivity, setLastActivity] = useState(Date.now());
   const [newProperty, setNewProperty] = useState({
     title: "",
     location: "",
@@ -16,6 +18,29 @@ const AddProperty = () => {
     specs: "",
     image: null,
   });
+  const [error, setError] = useState("");
+
+  const INACTIVE_TIMEOUT = 5 * 60 * 1000;
+
+  const handleUserActivity = () => {
+    setLastActivity(Date.now());
+  };
+  
+  // Setup activity listeners
+    useEffect(() => {
+      // Add event listeners for user activity
+      const events = ['mousedown', 'keydown', 'scroll', 'mousemove', 'touchstart'];
+      
+      events.forEach(event => {
+        window.addEventListener(event, handleUserActivity);
+      });
+  
+      return () => {
+        events.forEach(event => {
+          window.removeEventListener(event, handleUserActivity);
+        });
+      };
+    }, []);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -25,6 +50,26 @@ const AddProperty = () => {
       navigate("/login"); // Redirect jika tidak ada username di localStorage
     }
   }, [navigate]);
+
+  useEffect(() => {
+      const checkInactivity = setInterval(() => {
+        const timeSinceLastActivity = Date.now() - lastActivity;
+        console.log(timeSinceLastActivity);
+        if (timeSinceLastActivity >= INACTIVE_TIMEOUT) {
+          // Clear local storage
+          localStorage.clear();
+          // Reset states
+          setIsLoggedIn(false);
+          setError("Session expired due to inactivity");
+          // Navigate to login
+          navigate('/login');
+          // Clear the interval
+          clearInterval(checkInactivity);
+        }
+      }, 1000); // Check every second
+  
+      return () => clearInterval(checkInactivity);
+    }, [lastActivity, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,12 +81,20 @@ const AddProperty = () => {
   };
 
   const handleSave = async () => {
+    setError("");
+
+    // Validasi input
+    if (!newProperty.title || !newProperty.location || !newProperty.description || !newProperty.no_hp || !newProperty.price || !newProperty.specs) {
+      setError("Semua field harus diisi kecuali gambar.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("title", newProperty.title);
     formData.append("location", newProperty.location);
+    formData.append("description", newProperty.description);
     formData.append("price", newProperty.price);
     formData.append("no_hp", newProperty.no_hp);
-    formData.append("Description", newProperty.description);
     formData.append("specs", newProperty.specs);
     formData.append("image", newProperty.image);
 
@@ -68,6 +121,8 @@ const AddProperty = () => {
         <h2 className="text-2xl font-bold mb-4 text-center">Tambah Properti</h2>
         
         <p className="text-center text-gray-600 mb-4">Admin: <span className="font-semibold">{username}</span></p>
+
+        {error && <p className="text-center text-red-500 mb-4">{error}</p>}
 
         <label className="block mb-2">
           <span className="text-gray-700">Judul:</span>
@@ -109,7 +164,7 @@ const AddProperty = () => {
             value={newProperty.description}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded-md"
-          ></textarea>
+          />
         </label>
 
         <label className="block mb-2">
