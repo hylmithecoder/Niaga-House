@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { CertificateTypeSelect, PropertyTypeSelect, PropertyConditionSelect, FurnitureConditionSelect } from "../Components/IconSelect";
 import AddMoreDescription from "../Components/AddMoreDescription";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app";
 
 const AddProperty = () => { 
   console.log(API_URL);
