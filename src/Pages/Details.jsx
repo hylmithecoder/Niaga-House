@@ -20,7 +20,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app";
 
 const PropertyDetail = () => {
-  console.log(API_URL);
+  // console.log(API_URL);
   const { id } = useParams();
   const navigate = useNavigate();
   const [property, setProperty] = useState(null);

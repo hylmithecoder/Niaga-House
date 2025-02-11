@@ -16,17 +16,17 @@ const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
     }, [existingDescriptions]);
 
     useEffect(() => {
-        console.log('existingDescriptions:', existingDescriptions);
-        console.log('items before:', items);
+        // console.log('existingDescriptions:', existingDescriptions);
+        // console.log('items before:', items);
         const validDescriptions = Array.isArray(existingDescriptions) 
             ? existingDescriptions 
             : [];
-        console.log('validDescriptions:', validDescriptions);
+        // console.log('validDescriptions:', validDescriptions);
         setItems(validDescriptions);
     }, [existingDescriptions]);
     
     useEffect(() => {
-        console.log('items after update:', items);
+        // console.log('items after update:', items);
     }, [items]);
 
   const addNewItem = () => {

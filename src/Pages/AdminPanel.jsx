@@ -78,7 +78,7 @@ const AdminPanel = () => {
         }
 
         const response = await fetch(`https://endpoint-niaga-production.up.railway.app/users/${user.username}`);
-        console.log(response);
+        // console.log(response);
         if (!response.ok) throw new Error("Authentication failed");
 
         await response.json();
@@ -96,7 +96,7 @@ const AdminPanel = () => {
       if (!isLoggedIn) return;
       try {
         const response = await fetch("https://endpoint-niaga-production.up.railway.app/properties/");
-        console.log(response);
+        // console.log(response);
         if (!response.ok) throw new Error("Failed to fetch properties");
 
         const data = await response.json();

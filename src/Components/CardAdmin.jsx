@@ -75,7 +75,7 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
         });
   
         // Log untuk debugging
-        console.log('Processed descriptions:', processedDescriptions);
+        // console.log('Processed descriptions:', processedDescriptions);
         
         formData.append('additionalDescriptions', JSON.stringify(processedDescriptions));
       } else {
@@ -85,7 +85,7 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
   
       // Log final FormData
       for (let pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
+        // console.log(pair[0], pair[1]);
       }
   
       await onEdit(property.id, formData);
