@@ -7,7 +7,7 @@ import AddMoreDescription from "../Components/AddMoreDescription";
 const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app";
 
 const AddProperty = () => { 
-  console.log(API_URL);
+  // console.log(API_URL);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [newProperty, setNewProperty] = useState({
@@ -114,7 +114,7 @@ const AddProperty = () => {
   };
 
   const handleAddMoreDescription = (newItem) => {
-    console.log("Diterima di handleAddMoreDescription:", newItem);
+    // console.log("Diterima di handleAddMoreDescription:", newItem);
   
     setNewProperty((prev) => ({
       ...prev,
