@@ -77,7 +77,8 @@ const AdminPanel = () => {
           throw new Error("Username mismatch");
         }
 
-        const response = await fetch(`https://endpoint-niaga-production.up.railway.app/users/${user.username}`);
+        const response = await fetch(`http://localhost:5000/users/${user.username}`);
+        console.log(response);
         if (!response.ok) throw new Error("Authentication failed");
 
         await response.json();
@@ -94,7 +95,8 @@ const AdminPanel = () => {
     const fetchProperties = async () => {
       if (!isLoggedIn) return;
       try {
-        const response = await fetch("https://endpoint-niaga-production.up.railway.app/properties");
+        const response = await fetch("http://localhost:5000/properties");
+        console.log(response);
         if (!response.ok) throw new Error("Failed to fetch properties");
 
         const data = await response.json();

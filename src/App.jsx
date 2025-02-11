@@ -21,7 +21,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path='/property-detail/:id' element={<PropertyDetail />} /> 
+          <Route path='/property-detail/:id' element={<PropertyDetail/>} /> 
           <Route path='/admin/:username/add-property' element={<AddProperty />} />
           <Route path='/admin/:username' element={<AdminPanel />} />
           <Route path='/login' element={<Login />} />

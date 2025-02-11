@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Star, Award, Users, Building} from 'lucide-react';
+import { MapPin, Phone, Star} from 'lucide-react';
 import { motion } from 'framer-motion';
 import FeaturedProperties from '../Components/FeaturedProperty';
 import Footer from '../Components/Footer';
@@ -62,65 +62,12 @@ const HomePage = () => {
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Medan Land Property adalah perusahaan properti terkemuka yang berdiri sejak tahun 2010 di Medan. 
+              Medan Land Property adalah agensi properti terkemuka yang berdiri sejak tahun 2010 di Medan. 
               Dengan pengalaman lebih dari 13 tahun, kami telah dipercaya oleh ribuan keluarga dalam 
               menemukan hunian ideal mereka.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award className="text-blue-600" size={32} />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Terpercaya</h3>
-              <p className="text-gray-600">
-                13 tahun pengalaman dalam industri properti dengan lebih dari 10,000 transaksi sukses
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="text-blue-600" size={32} />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Tim Profesional</h3>
-              <p className="text-gray-600">
-                Didukung oleh lebih dari 200 agen properti berpengalaman dan tersertifikasi
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Building className="text-blue-600" size={32} />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Portofolio Luas</h3>
-              <p className="text-gray-600">
-                Menawarkan beragam pilihan properti dari rumah, apartemen, hingga ruko di lokasi strategis
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="text-3xl font-bold text-blue-600 mb-2">10,000+</h4>
-                <p className="text-gray-600">Transaksi Sukses</p>
-              </div>
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="text-3xl font-bold text-blue-600 mb-2">200+</h4>
-                <p className="text-gray-600">Agen Properti</p>
-              </div>
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="text-3xl font-bold text-blue-600 mb-2">15+</h4>
-                <p className="text-gray-600">Kota</p>
-              </div>
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="text-3xl font-bold text-blue-600 mb-2">98%</h4>
-                <p className="text-gray-600">Klien Puas</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
     </div>
         </motion.div>
       {/* Featured Properties */}
