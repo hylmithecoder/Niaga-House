@@ -89,7 +89,7 @@ const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
           Add New
         </button>        
       </div>
-      <h5 className="text-lg font-thin text-yellow-500">Kalau Mau Tambah Desckripsi, Semua nya harus Di Upload Ulang Lagi</h5>
+      <h5 className="text-lg font-thin text-yellow-500">Kalau Mau Tambah Desckripsi, Semua Gambar harus Di Upload Ulang Lagi</h5>
       {Array.isArray(items) && items.map((item, index) => (
             <div key={index} className="p-4 border rounded-md space-y-3">
           <div className="flex justify-between">
