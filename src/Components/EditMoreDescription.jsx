@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
+    const [descriptions, setDescriptions] = useState(existingDescriptions || []);
     const [items, setItems] = useState(() => {
         return Array.isArray(existingDescriptions) ? existingDescriptions : [];
       });
@@ -58,6 +59,21 @@ const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
   const handleFileChange = (e, index) => {
     if (e.target.files?.[0]) {
       updateItem(index, 'image', e.target.files[0]);
+    }
+  };
+  
+  // Di EditMoreDescription.jsx
+  const handleImageChange = (index, e) => {
+    const file = e.target.files[0];
+    if (file) {
+      console.log(`New image selected for index ${index}:`, file);
+      const newDescriptions = [...descriptions];
+      newDescriptions[index] = {
+        ...newDescriptions[index],
+        image: file
+      };
+      setDescriptions(newDescriptions);
+      onSave(newDescriptions); // Pastikan ini dipanggil
     }
   };
 
