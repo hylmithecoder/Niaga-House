@@ -80,8 +80,7 @@ const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
   return (
     <div className="space-y-4 border-t pt-4 mt-4">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-medium">Tambah Deskripsi</h3>
-        <h5 className="text-lg font-medium text-yellow-500">Kalau Mau Tambah Gambar Semua nya harus Di Upload Ulang Lagi</h5>
+        <h3 className="text-lg font-medium">Tambah Deskripsi</h3>        
         <button
           type="button"
           onClick={addNewItem}
@@ -89,6 +88,7 @@ const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
         >
           Add New
         </button>
+        <h5 className="text-lg font-medium text-yellow-500">Kalau Mau Tambah Gambar Semua nya harus Di Upload Ulang Lagi</h5>
       </div>
 
       {Array.isArray(items) && items.map((item, index) => (
