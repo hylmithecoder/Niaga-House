@@ -254,22 +254,21 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
               className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Harga (Rp)"
             />
+            <span className="text-gray-700">Thumbnail:</span>
             <input
               type="file"
               name="image"
               onChange={handleImageChange}
               className="w-full p-2 border rounded"
             />
-            <span className="text-gray-700">Thumbnail:</span>
-            <input
+            {/* <input
               type="text"
               name="specs"
               value={editedProperty.specs}
               onChange={handleChange}
               className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Spesifikasi"
-            />
-            
+            />             */}
             <EditMoreDescription
               existingDescriptions={editedProperty.additionalDescriptions}
               onSave={(newDescriptions) => {

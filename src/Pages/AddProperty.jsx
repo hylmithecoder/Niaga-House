@@ -317,7 +317,7 @@ const AddProperty = () => {
           />
         </label>
 
-        <label className="block mb-2">
+        {/* <label className="block mb-2">
           <span className="text-gray-700">Spesifikasi:</span>
           <input
             type="text"
@@ -326,7 +326,7 @@ const AddProperty = () => {
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded-md"
           />
-        </label>
+        </label> */}
 
         <AddMoreDescription
           additionalDescriptions={newProperty.additionalDescriptions}
