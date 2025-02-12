@@ -14,9 +14,9 @@ const AddProperty = () => {
     type: "",
     title: "",
     surface_area: "",
-    surface_area_unit: "",
+    surface_area_unit: "m²",
     building_area: "",
-    building_area_unit: "",
+    building_area_unit: "m²",
     bed_count: "",
     bath_count: "",
     floor: "",
@@ -35,7 +35,7 @@ const AddProperty = () => {
   const [error, setError] = useState("");
   
   useEffect(() => {
-    console.log("State additionalDescriptions:", newProperty.additionalDescriptions);
+    // console.log("State additionalDescriptions:", newProperty.additionalDescriptions);
   }, [newProperty.additionalDescriptions]);
   
   useEffect(() => {
