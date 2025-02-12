@@ -31,8 +31,8 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
     const formData = new FormData();
 
     // Debug: Log state sebelum pembentukan FormData
-    console.log("Current editedProperty:", editedProperty);
-    console.log("Additional Descriptions:", editedProperty.additionalDescriptions);
+    // console.log("Current editedProperty:", editedProperty);
+    // console.log("Additional Descriptions:", editedProperty.additionalDescriptions);
 
     formData.append("type", editedProperty.type);
     formData.append("title", editedProperty.title);
@@ -60,14 +60,14 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
       const descriptions = editedProperty.additionalDescriptions || [];
       
       if (Array.isArray(descriptions) && descriptions.length > 0) {
-        console.log("Processing descriptions:", descriptions);
+        // console.log("Processing descriptions:", descriptions);
         
         descriptions.forEach((desc, index) => {
-          console.log(`Description ${index}:`, desc);
-          console.log(`Description ${index} image:`, desc.image);
+          // console.log(`Description ${index}:`, desc);
+          // console.log(`Description ${index} image:`, desc.image);
           
           if (desc.image instanceof File) {
-            console.log(`Appending image for description ${index}:`, desc.image);
+            // console.log(`Appending image for description ${index}:`, desc.image);
             formData.append("additionalImages", desc.image);
           }
         });
@@ -77,12 +77,12 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
           image: desc.image instanceof File ? '' : (desc.image || '')
         }));
         
-        console.log("Processed descriptions:", processedDescriptions);
+        // console.log("Processed descriptions:", processedDescriptions);
         formData.append('additionalDescriptions', JSON.stringify(processedDescriptions));
       }
 
       // Debug: Log final FormData
-      console.log("Final FormData entries:");
+      // console.log("Final FormData entries:");
       for (let pair of formData.entries()) {
         console.log(pair[0], pair[1]);
       }
@@ -273,13 +273,13 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
             <EditMoreDescription
               existingDescriptions={editedProperty.additionalDescriptions}
               onSave={(newDescriptions) => {
-                console.log("New descriptions received:", newDescriptions);
+                // console.log("New descriptions received:", newDescriptions);
                 setEditedProperty(prev => {
                   const updated = {
                     ...prev,
                     additionalDescriptions: newDescriptions
                   };
-                  console.log("Updated editedProperty:", updated);
+                  // console.log("Updated editedProperty:", updated);
                   return updated;
                 });
               }}

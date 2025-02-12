@@ -81,6 +81,7 @@ const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
     <div className="space-y-4 border-t pt-4 mt-4">
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-medium">Tambah Deskripsi</h3>
+        <h5 className="text-lg font-medium text-yellow-500">Kalau Mau Tambah Gambar Semua nya harus Di Upload Ulang Lagi</h5>
         <button
           type="button"
           onClick={addNewItem}
