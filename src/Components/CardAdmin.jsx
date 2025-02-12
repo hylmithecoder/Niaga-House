@@ -7,16 +7,11 @@ import EditMoreDescription from "./EditMoreDescription";
 const CardAdmin = ({ property, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedProperty, setEditedProperty] = useState(() => {
-    const initialDescriptions = Array.isArray(property?.additionalDescriptions) 
-      ? property.additionalDescriptions.map(desc => ({
-          description: desc.description || '',
-          image: desc.image || null
-        }))
-      : [];
-      
     return {
       ...property,
-      additionalDescriptions: initialDescriptions
+      additionalDescriptions: Array.isArray(property?.additionalDescriptions) 
+        ? property.additionalDescriptions 
+        : []
     };
   });
   const [newImageFile, setNewImageFile] = useState(null);
@@ -44,11 +39,6 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-
-    // Debug: Log state sebelum pembentukan FormData
-    console.log("Current editedProperty:", editedProperty);
-    console.log("Additional Descriptions:", editedProperty.additionalDescriptions);
-
     formData.append("type", editedProperty.type);
     formData.append("title", editedProperty.title);
     formData.append("surface_area", editedProperty.surface_area);
@@ -75,29 +65,25 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
       const descriptions = editedProperty.additionalDescriptions || [];
       
       if (Array.isArray(descriptions) && descriptions.length > 0) {
-        console.log("Processing descriptions:", descriptions);
-        
+        // Append setiap gambar tambahan dengan nama field yang benar
         descriptions.forEach((desc, index) => {
-          console.log(`Description ${index}:`, desc);
-          console.log(`Description ${index} image:`, desc.image);
-          
           if (desc.image instanceof File) {
-            console.log(`Appending image for description ${index}:`, desc.image);
             formData.append("additionalImages", desc.image);
           }
         });
 
+        // Append descriptions tanpa file gambar
         const processedDescriptions = descriptions.map(desc => ({
           description: desc.description || '',
           image: desc.image instanceof File ? '' : (desc.image || '')
         }));
         
-        console.log("Processed descriptions:", processedDescriptions);
         formData.append('additionalDescriptions', JSON.stringify(processedDescriptions));
+      } else {
+        formData.append('additionalDescriptions', JSON.stringify([]));
       }
 
-      // Debug: Log final FormData
-      console.log("Final FormData entries:");
+      // Debug: log formData entries
       for (let pair of formData.entries()) {
         console.log(pair[0], pair[1]);
       }
@@ -105,7 +91,8 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
       await onEdit(property.id, formData);
       setIsEditing(false);
     } catch (error) {
-      console.error('Error in handleSubmit:', error);
+      console.error('Error processing additionalDescriptions:', error);
+      // Handle error
     }
   };
   
@@ -286,15 +273,10 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
             <EditMoreDescription
               existingDescriptions={editedProperty.additionalDescriptions}
               onSave={(newDescriptions) => {
-                console.log("New descriptions received:", newDescriptions);
-                setEditedProperty(prev => {
-                  const updated = {
-                    ...prev,
-                    additionalDescriptions: newDescriptions
-                  };
-                  console.log("Updated editedProperty:", updated);
-                  return updated;
-                });
+                setEditedProperty(prev => ({
+                  ...prev,
+                  additionalDescriptions: newDescriptions
+                }));
               }}
             />
 
