@@ -49,55 +49,40 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
       formData.append("image", newImageFile);
     }
 
+    // Handle additionalDescriptions dan gambarnya
     try {
-      // Pastikan additionalDescriptions ada dan berbentuk array
       const descriptions = editedProperty.additionalDescriptions || [];
       
       if (Array.isArray(descriptions) && descriptions.length > 0) {
-        const processedDescriptions = descriptions.map((desc, index) => {
-          // Validasi setiap item
-          if (!desc) return { description: '', image: '' };
-  
-          // Handle jika ada file gambar baru
+        // Append setiap gambar tambahan dengan nama field yang benar
+        descriptions.forEach((desc, index) => {
           if (desc.image instanceof File) {
-            formData.append(`additionalImage_${index}`, desc.image);
-            return {
-              description: desc.description || '',
-              image: ''
-            };
+            formData.append("additionalImages", desc.image);
           }
-  
-          // Handle jika gambar existing (URL) atau tidak ada gambar
-          return {
-            description: desc.description || '',
-            image: desc.image || ''
-          };
         });
-  
-        // Log untuk debugging
-        // console.log('Processed descriptions:', processedDescriptions);
+
+        // Append descriptions tanpa file gambar
+        const processedDescriptions = descriptions.map(desc => ({
+          description: desc.description || '',
+          image: desc.image instanceof File ? '' : (desc.image || '')
+        }));
         
         formData.append('additionalDescriptions', JSON.stringify(processedDescriptions));
       } else {
-        // Jika tidak ada descriptions, kirim array kosong
         formData.append('additionalDescriptions', JSON.stringify([]));
       }
-  
-      // Log final FormData
+
+      // Debug: log formData entries
       for (let pair of formData.entries()) {
-        // console.log(pair[0], pair[1]);
+        console.log(pair[0], pair[1]);
       }
-  
+
       await onEdit(property.id, formData);
       setIsEditing(false);
     } catch (error) {
       console.error('Error processing additionalDescriptions:', error);
-      // Fallback: kirim array kosong jika terjadi error
-      formData.append('additionalDescriptions', JSON.stringify([]));
-      await onEdit(property.id, formData);
-      setIsEditing(false);
+      // Handle error
     }
-
   };
   
 
