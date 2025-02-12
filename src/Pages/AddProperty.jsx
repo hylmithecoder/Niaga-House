@@ -60,7 +60,7 @@ const AddProperty = () => {
     setError("");
   
     // Validasi input utama
-    if (!newProperty.type || !newProperty.title || !newProperty.surface_area || !newProperty.location || !newProperty.description || !newProperty.no_hp || !newProperty.price || !newProperty.specs) {
+    if (!newProperty.type || !newProperty.title || !newProperty.surface_area || !newProperty.location || !newProperty.description || !newProperty.no_hp || !newProperty.price) {
       setError("Semua field harus diisi kecuali gambar.");
       return;
     }
