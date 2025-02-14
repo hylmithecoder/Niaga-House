@@ -3,6 +3,7 @@ import { MapPin, Trash2, Edit2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { CertificateTypeSelect, PropertyTypeSelect, PropertyConditionSelect, FurnitureConditionSelect } from "./IconSelect";
 import EditMoreDescription from "./EditMoreDescription";
+import AutoResizeTextarea from "./AutoResizeTextArea";
 
 const CardAdmin = ({ property, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -83,9 +84,9 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
 
       // Debug: Log final FormData
       // console.log("Final FormData entries:");
-      for (let pair of formData.entries()) {
-        // console.log(pair[0], pair[1]);
-      }
+      // for (let pair of formData.entries()) {
+      //   // console.log(pair[0], pair[1]);
+      // }
 
       await onEdit(property.id, formData);
       setIsEditing(false);
@@ -231,6 +232,7 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
               className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Lokasi"
             />
+            <label className="text-green-500">Nomor Whats App:</label>
             <input
               type="text"
               name="no_hp"
@@ -239,13 +241,16 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
               className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Nomor HP"
             />
-            <textarea
+            <label className="text-gray-700">Deskripsi:</label>
+            {/* <textarea
               name="description"
               value={editedProperty.description}
               onChange={handleChange}
               className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Deskripsi"
-            />
+            /> */}
+            <AutoResizeTextarea onChange={handleChange} value={editedProperty.description}/>
+            <label className="text-gray-700">Harga:</label>
             <input
               type="number"
               name="price"
@@ -261,6 +266,7 @@ const CardAdmin = ({ property, onEdit, onDelete }) => {
               onChange={handleImageChange}
               className="w-full p-2 border rounded"
             />
+            <img src={editedProperty.image} alt="" className="w-20 h-20 object-cover rounded-md"/>
             {/* <input
               type="text"
               name="specs"

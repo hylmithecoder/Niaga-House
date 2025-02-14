@@ -27,7 +27,6 @@ const Card = ({ property }) => {
           <MapPin size={18} className="mr-2" />
           {property.location}
         </div>
-        <p className="text-gray-600 mb-4">{property.specs}</p>
         <div className="flex justify-between items-center">
           <span className="text-xl font-bold text-blue-600">
             {formatPrice(property.price)}

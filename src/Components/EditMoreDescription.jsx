@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
-    const [descriptions, setDescriptions] = useState(existingDescriptions || []);
+    // const [descriptions, setDescriptions] = useState(existingDescriptions || []);
     const [items, setItems] = useState(() => {
         return Array.isArray(existingDescriptions) ? existingDescriptions : [];
       });
@@ -63,33 +63,33 @@ const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
   };
   
   // Di EditMoreDescription.jsx
-  const handleImageChange = (index, e) => {
-    const file = e.target.files[0];
-    if (file) {
-      console.log(`New image selected for index ${index}:`, file);
-      const newDescriptions = [...descriptions];
-      newDescriptions[index] = {
-        ...newDescriptions[index],
-        image: file
-      };
-      setDescriptions(newDescriptions);
-      onSave(newDescriptions); // Pastikan ini dipanggil
-    }
-  };
+  // const handleImageChange = (index, e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     console.log(`New image selected for index ${index}:`, file);
+  //     const newDescriptions = [...descriptions];
+  //     newDescriptions[index] = {
+  //       ...newDescriptions[index],
+  //       image: file
+  //     };
+  //     setDescriptions(newDescriptions);
+  //     onSave(newDescriptions); // Pastikan ini dipanggil
+  //   }
+  // };
 
   return (
     <div className="space-y-4 border-t pt-4 mt-4">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-medium">Tambah Deskripsi</h3>        
+        <h3 className="text-lg font-medium">Tambah Gambar</h3>        
         <button
           type="button"
           onClick={addNewItem}
           className="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
         >
-          Add New
+          Tambah Gambar
         </button>        
       </div>
-      <h5 className="text-lg font-thin text-yellow-500">Kalau Mau Tambah Desckripsi, Semua Gambar harus Di Upload Ulang Lagi</h5>
+      <h5 className="text-lg font-thin text-yellow-500">Kalau Mau Tambah Gambar, Semua Gambar harus Di Upload Ulang Lagi</h5>
       {Array.isArray(items) && items.map((item, index) => (
             <div key={index} className="p-4 border rounded-md space-y-3">
           <div className="flex justify-between">
@@ -103,7 +103,7 @@ const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
             </button>
           </div>
 
-          <div className="space-y-2">
+          {/* <div className="space-y-2">
             <textarea
               value={item.description || ''}
               onChange={(e) => updateItem(index, 'description', e.target.value)}
@@ -111,7 +111,7 @@ const EditMoreDescription = ({ existingDescriptions = [], onSave }) => {
               placeholder="Enter description"
               rows="3"
             />
-          </div>
+          </div> */}
 
           <div className="space-y-2">
             <input

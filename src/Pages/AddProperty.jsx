@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CertificateTypeSelect, PropertyTypeSelect, PropertyConditionSelect, FurnitureConditionSelect } from "../Components/IconSelect";
 import AddMoreDescription from "../Components/AddMoreDescription";
+import AutoResizeTextarea from "../Components/AutoResizeTextArea";
 
 const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app";
 
@@ -167,7 +168,7 @@ const AddProperty = () => {
         <span className="text-gray-700">Luas Tanah:</span>
         <div className="flex items-center gap-2">
           <input
-            type="text"
+            type="number"
             name="surface_area"
             value={newProperty.surface_area}
             onChange={handleChange}
@@ -189,7 +190,7 @@ const AddProperty = () => {
         <span className="text-gray-700">Luas Bangunan:</span>
         <div className="flex items-center gap-2">
           <input
-            type="text"
+            type="number"
             name="building_area"
             value={newProperty.building_area}
             onChange={handleChange}
@@ -289,6 +290,7 @@ const AddProperty = () => {
 
         <label className="block mb-2">
           <span className="text-gray-700">Deskripsi:</span>
+          <AutoResizeTextarea/>
           <textarea 
             name="description" 
             value={newProperty.description}
@@ -300,7 +302,7 @@ const AddProperty = () => {
         <label className="block mb-2">
           <span className="text-gray-700">Harga:</span>
           <input
-            type="text"
+            type="number"
             name="price"
             value={newProperty.price}
             onChange={handleChange}
@@ -309,7 +311,7 @@ const AddProperty = () => {
         </label>
 
         <label className="block mb-2">
-          <span className="text-gray-700">Gambar:</span>
+          <span className="text-gray-700">Thumbnail:</span>
           <input
             type="file"
             onChange={handleImageChange}

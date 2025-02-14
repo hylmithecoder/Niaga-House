@@ -25,15 +25,7 @@ const AddMoreDescription = ({ additionalDescriptions, onAdd, onRemove }) => {
 
   return (
     <div className="mb-4">
-      <h3 className="text-lg font-semibold mb-2">Tambahkan Deskripsi & Gambar</h3>
-      
-      {/* Input Deskripsi */}
-      <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Tambahkan deskripsi tambahan..."
-        className="w-full px-3 py-2 border rounded-md mb-2"
-      />
+      <h3 className="text-lg font-semibold mb-2">Tambahkan Gambar</h3>
 
       {/* Input Gambar */}
       <input

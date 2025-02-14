@@ -26,8 +26,9 @@ const PropertyDetail = () => {
   const [property, setProperty] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  
   const [selectedImage, setSelectedImage] = useState(0);
-  const [showFullDescription, setShowFullDescription] = useState(false);
+  // const [showFullDescription, setShowFullDescription] = useState(false);
 
   useEffect(() => {
     const fetchProperty = async () => {
@@ -58,29 +59,31 @@ const PropertyDetail = () => {
 
   // Image gallery navigation
   const handleNextImage = () => {
-    if (property?.additionalDescriptions?.length) {
-      setSelectedImage((prev) => 
-        prev === property.additionalDescriptions.length ? 0 : prev + 1
-      );
-    }
+    setSelectedImage((prev) => 
+      (prev === allImages.length - 1 ? 0 : prev + 1)
+    );
   };
 
   const handlePrevImage = () => {
-    if (property?.additionalDescriptions?.length) {
       setSelectedImage((prev) => 
-        prev === 0 ? property.additionalDescriptions.length : prev - 1
+        prev === 0 ? allImages.length - 1 : prev - 1
       );
-    }
   };
 
   // Get all images including main and additional
-  const getAllImages = (property) => {
-    if (!property) return [];
-    return [
-      property.image,
-      ...(property.additionalDescriptions?.map(desc => desc.image) || [])
-    ];
-  };
+  // const getAllImages = (property) => {
+  //   if (!property) return [];
+  //   return [
+  //     property.image,
+  //     ...(property.additionalDescriptions?.map(desc => desc.image) || [])
+  //   ];
+  // };
+
+  const allImages = (property?.additionalDescriptions || [])
+  .map(desc => desc.image)
+  .filter(Boolean);
+  
+  console.log(allImages)
 
   if (isLoading) {
     return (
@@ -129,8 +132,6 @@ const PropertyDetail = () => {
     );
   }
 
-  const allImages = getAllImages(property);
-
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <motion.div 
@@ -139,6 +140,7 @@ const PropertyDetail = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
+        <div>
         {/* Navigation */}
         <div className="mb-6">
           <button
@@ -157,8 +159,8 @@ const PropertyDetail = () => {
             <AnimatePresence mode="wait">
               <motion.img
                 key={selectedImage}
-                src={allImages[selectedImage]}
-                alt={property.title}
+                src={allImages[selectedImage]} // Gunakan allImages
+                alt={`Image ${selectedImage + 1}`}
                 className="w-full h-full object-cover"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -166,7 +168,7 @@ const PropertyDetail = () => {
                 transition={{ duration: 0.5 }}
               />
             </AnimatePresence>
-            
+
             {allImages.length > 1 && (
               <>
                 <button
@@ -196,34 +198,22 @@ const PropertyDetail = () => {
                 />
               ))}
             </div>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-            
-            {/* Property Title Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                <h1 className="text-4xl font-bold text-white mb-4">
-                  {property.title}
-                </h1>
-                <div className="flex flex-wrap items-center text-white/90 gap-4">
-                  <div className="flex items-center">
-                    <MapPin className="w-5 h-5 mr-2" />
-                    <span>{property.location}</span>
-                  </div>
-                  <div className="text-2xl font-bold text-blue-400">
-                    {formatPrice(property.price)}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
           </div>
-
-          {/* Property Details */}
+        </div>
           <div className="p-8">
+            <h1 className="text-3xl font-bold mb-4">{property.title}</h1>
+            <div className="flex items-center mb-4">
+              <MapPin className="w-6 h-6 mr-2 text-blue-500" />
+              <span className="text-gray-600">{property.location}</span>
+              <span className="text-blue-600 text-3xl font-bold ml-auto">{formatPrice(property.price)}</span>
+            </div>
+            <div className="flex items-center mb-4">
+             
+            </div>
+            <p className="text-gray-600">{property.description}</p>
+          </div>
+          {/* Property Details */}
+          <div className="p-6">
             {/* Key Features */}
             <motion.div 
               className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
@@ -287,48 +277,6 @@ const PropertyDetail = () => {
                 </div>
               </div>
             </motion.div>
-
-            {/* Description */}
-          <motion.div
-            className="mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Deskripsi</h2>
-            <div className="relative">
-              {/* Looping Additional Description */}
-              {property.additionalDescriptions && property.additionalDescriptions.map((item, index) => (
-                <div key={index} className={`mb-4 ${!showFullDescription && index > 3 ? 'hidden' : ''}`}>
-                  {/* Gambar (jika ada) */}
-                  {item.image && (
-                    <img 
-                      src={item.image} 
-                      alt={`Deskripsi ${index + 1}`} 
-                      className="w-full h-auto rounded-lg mb-2"
-                    />
-                  )}
-
-                  {/* Teks Deskripsi */}
-                  <p className="text-gray-600 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-
-              {/* Tombol Lihat Selengkapnya */}
-              {property.additionalDescriptions?.length > 4 && (
-                <button
-                  onClick={() => setShowFullDescription(!showFullDescription)}
-                  className="text-blue-500 hover:text-blue-600 mt-2 font-medium"
-                >
-                  {showFullDescription ? 'Lihat lebih sedikit' : 'Lihat selengkapnya'}
-                </button>
-              )}
-            </div>
-          </motion.div>
-
-
             {/* Contact Button */}
             <motion.div
               className="flex gap-4"
