@@ -83,7 +83,7 @@ const PropertyDetail = () => {
   .map(desc => desc.image)
   .filter(Boolean);
   
-  console.log(allImages)
+  // console.log(allImages)
 
   if (isLoading) {
     return (
