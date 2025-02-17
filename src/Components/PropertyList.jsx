@@ -62,7 +62,7 @@ const PropertyList = () => {
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="flex-1 relative">
           <input
-            type="text"
+            type="search"
             placeholder="Masukkan lokasi"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
@@ -129,7 +129,6 @@ const PropertyList = () => {
                     <span>{property.location}</span>
                   </div>
                   <div className="flex justify-between items-center mt-2">
-                    <span className="text-sm text-gray-500">{property.specs}</span>
                     <span className="text-sm font-bold text-gray-900">{formatPrice(property.price)}</span>
                     <button 
                       className="flex items-center text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium"

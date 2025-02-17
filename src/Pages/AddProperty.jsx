@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CertificateTypeSelect, PropertyTypeSelect, PropertyConditionSelect, FurnitureConditionSelect } from "../Components/IconSelect";
-import AddMoreDescription from "../Components/AddMoreDescription";
 import AutoResizeTextarea from "../Components/AutoResizeTextArea";
+import AddMoreImages from "../Components/AddMoreImages";
 
 const API_URL = process.env.REACT_APP_API_URL || "https://endpoint-niaga-production.up.railway.app";
 
@@ -130,6 +130,7 @@ const AddProperty = () => {
       additionalDescriptions: prev.additionalDescriptions.filter((_, i) => i !== index),
     }));
   };
+  
   
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100">
@@ -290,13 +291,13 @@ const AddProperty = () => {
 
         <label className="block mb-2">
           <span className="text-gray-700">Deskripsi:</span>
-          <AutoResizeTextarea/>
-          <textarea 
+          <AutoResizeTextarea value={newProperty.description} onChange={handleChange}/>
+          {/* <textarea 
             name="description" 
             value={newProperty.description}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded-md"
-          />
+          /> */}
         </label>
 
         <label className="block mb-2">
@@ -330,7 +331,7 @@ const AddProperty = () => {
           />
         </label> */}
 
-        <AddMoreDescription
+        <AddMoreImages
           additionalDescriptions={newProperty.additionalDescriptions}
           onAdd={handleAddMoreDescription}
           onRemove={handleRemoveDescription}

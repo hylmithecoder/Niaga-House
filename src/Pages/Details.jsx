@@ -70,15 +70,6 @@ const PropertyDetail = () => {
       );
   };
 
-  // Get all images including main and additional
-  // const getAllImages = (property) => {
-  //   if (!property) return [];
-  //   return [
-  //     property.image,
-  //     ...(property.additionalDescriptions?.map(desc => desc.image) || [])
-  //   ];
-  // };
-
   const allImages = (property?.additionalDescriptions || [])
   .map(desc => desc.image)
   .filter(Boolean);
@@ -210,7 +201,7 @@ const PropertyDetail = () => {
             <div className="flex items-center mb-4">
              
             </div>
-            <p className="text-gray-600">{property.description}</p>
+            <p className="text-gray-600 whitespace-pre-wrap p-2 text-justify">{property.description}</p>
           </div>
           {/* Property Details */}
           <div className="p-6">
